@@ -1,0 +1,19 @@
+.control_element_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1000px) {
+  .control_element_container {
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+}
+.recently_list_title {
+  font-size: 30px;
+
+  text-align: center;
+  color: rgb(255, 215, 123);
+  margin-bottom: 20px;
+}

@@ -1,0 +1,25 @@
+.navigation_links {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.auth_container {
+  display: flex;
+  gap: 20px;
+}
+
+/* .shared_layout_item_link {
+  margin-left: 30px;
+  background-color: darkgoldenrod;
+  padding: 8px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.shared_layout_item_link.active {
+  background-color: chocolate;
+} */

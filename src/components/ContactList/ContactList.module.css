@@ -1,0 +1,12 @@
+ul {
+  margin-left: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.list_contact {
+  padding-bottom: 30px;
+}
