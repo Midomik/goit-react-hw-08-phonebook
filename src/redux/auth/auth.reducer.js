@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com/',
@@ -19,7 +20,9 @@ export const loginThunk = createAsyncThunk(
       console.log(data);
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      console.log('sadsadsad');
+      console.log(error.request.status);
+      return thunkApi.rejectWithValue(error.request.status);
     }
   }
 );
@@ -102,19 +105,32 @@ const AuthSlice = createSlice({
         state.authenticated = true;
         state.token = payload.token;
         state.userData = payload.user;
+        toast.success(`Welcome ${payload.user.name}!!! `, {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.authenticated = true;
         state.token = payload.token;
         state.userData = payload.user;
+        toast.success(`Welcome ${payload.user.name}!!! `, {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .addCase(updateThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.authenticated = true;
         state.userData = payload;
+
+        toast.success(`Welcome ${payload.name}!!! `, {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .addCase(logOutThunk.fulfilled, (state, { payload }) => {
+        toast.success(`Bye ${state.userData.name} ( `, {
+          position: toast.POSITION.TOP_CENTER,
+        });
         return initialState;
       })
       .addMatcher(
@@ -139,6 +155,11 @@ const AuthSlice = createSlice({
         (state, { payload }) => {
           state.isLoading = false;
           state.error = payload;
+          const err =
+            payload === 400 ? 'Error: Invalid credentials!' : 'Server Error!';
+          toast.error(`${err} `, {
+            position: toast.POSITION.TOP_CENTER,
+          });
         }
       );
   },

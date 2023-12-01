@@ -4,12 +4,14 @@ import { useSelector } from 'react-redux';
 import { selectAuthenticated } from 'redux/auth/auth.selectors';
 
 import { UserMenu } from 'components/UserMenu/UserMenu';
+import { ToastNotify } from 'components/ToastNotify/ToastNotify';
 
 export const SharedLayout = ({ children }) => {
   const authenticated = useSelector(selectAuthenticated);
 
   return (
     <div>
+      <ToastNotify />
       <header>
         <nav className={css.navigation_links}>
           {authenticated ? (
@@ -21,15 +23,6 @@ export const SharedLayout = ({ children }) => {
                 >
                   Contacts
                 </NavLink>
-                {/* <NavLink
-                  className="shared_layout_item_link"
-                  to="/recently_dialed"
-                >
-                  Recently Dailed
-                </NavLink> */}
-                {/* <NavLink className="shared_layout_item_link" to="/favorite">
-                  Favorite
-                </NavLink> */}
               </div>
               <UserMenu />
             </>

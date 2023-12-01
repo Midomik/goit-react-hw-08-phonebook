@@ -7,6 +7,7 @@ import { addContact } from 'redux/contacts/contacts.reducer';
 
 import css from './Form.module.css';
 import { mainContacts } from 'redux/contacts/contacts.selectors';
+import { toast } from 'react-toastify';
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,9 @@ export const Form = () => {
         itemContact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
     );
     if (isInList) {
-      alert(`${name} is already in contacts!`);
+      toast.warn(`${name} is already in contacts!`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     } else {
       addToContact({
         name,
