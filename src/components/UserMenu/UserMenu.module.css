@@ -28,6 +28,12 @@
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .user_name {
+    font-size: 12px;
+  }
+}
+
 .log_out_btn {
   font-size: 18px;
   color: rgb(185, 177, 177);

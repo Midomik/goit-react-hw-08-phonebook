@@ -6,9 +6,8 @@ import { selectAuthenticated } from 'redux/auth/auth.selectors';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 
 export const SharedLayout = ({ children }) => {
-  
   const authenticated = useSelector(selectAuthenticated);
-  
+
   return (
     <div>
       <header>
@@ -16,7 +15,10 @@ export const SharedLayout = ({ children }) => {
           {authenticated ? (
             <>
               <div>
-                <NavLink className="shared_layout_item_link" to="/">
+                <NavLink
+                  className="shared_layout_item_link shared_layout_item_link_contacts"
+                  to="/"
+                >
                   Contacts
                 </NavLink>
                 {/* <NavLink

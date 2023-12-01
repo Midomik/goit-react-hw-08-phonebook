@@ -67,7 +67,14 @@ export const App = () => {
             {appRoutes.map(({ path, element }) => (
               <Route key={path} path={path} element={element} />
             ))}
-            <Route path="*" element={<LoginPage />} />
+            <Route
+              path="*"
+              element={
+                <PrivateRoute>
+                  <LoginPage />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </div>
       </SharedLayout>
